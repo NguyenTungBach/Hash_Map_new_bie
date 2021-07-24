@@ -13,10 +13,15 @@ public class TeacherHashMap {
             list.add(new Teacher("GV001","Nguyễn Tuân","06-05-2019",1));
             list.add(new Teacher("GV002","Ðặng Kim Thi","06-05-2019",2));
             list.add(new Teacher("GV001","Nguyễn Tuân","07-05-2019",2));
-            list.add(new Teacher("GV003","AI do","08-05-2017",1));
+            list.add(new Teacher("GV003","Quang Hoà","07-05-2019",2));
             list.add(new Teacher("GV004","Văn Thuận","07-05-2019",1));
             list.add(new Teacher("GV005","Hồng Luyến","08-05-2019",5));
-            list.add(new Teacher("GV002","Ðặng Kim Thi","08-05-2019",3));
+            list.add(new Teacher("GV002","Ðặng Kim Thi","08-05-2019",1));
+            list.add(new Teacher("GV002","Ðặng Kim Thi","09-05-2019",1));
+            list.add(new Teacher("GV005","Hồng Luyến","09-05-2019",5));
+            list.add(new Teacher("GV001","Nguyễn Tuân","10-05-2019",1));
+            list.add(new Teacher("GV003","Quang Hoà","10-05-2019",1));
+            list.add(new Teacher("GV004","Văn Thuận","11-05-2019",1));
         }
         List<Teacher> listTop = new ArrayList<>();
 
@@ -49,9 +54,8 @@ public class TeacherHashMap {
         writeFile("....................................... \n",f);
 
         checkDuplicate(list);
-        checkNumber(list);
+        checkQuantity(list);
         checkDayEat(list);
-
 
         System.out.println("Top giảng viên đang có nguy cơ béo");
         writeFile("Top giảng viên đang có nguy cơ béo \n",f);
@@ -75,7 +79,7 @@ public class TeacherHashMap {
             writeFile(entry.getValue().toString(),f);
             writeFile("\n",f);
         }
-
+//////////////////////////////////
 //        try {
 //            FileWriter fileWriter = new FileWriter("test.txt",true);
 //            fileWriter.write("Dữ liệu đầu vào \n");
@@ -144,14 +148,8 @@ public class TeacherHashMap {
     private static void checkDayEat(List<Teacher> list) {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i+1; j < list.size(); j++) {
-                if (list.get(i).getNumber() == list.get(j).getNumber()){ // nếu trùng tổng số bánh
-                    if (list.get(i).getDayEat().compareTo(list.get(j).getDayEat()) > 0){ // ngày i sớm hơn ngày j sơm nhất lên đầu
-                        Teacher convertTeacher = new Teacher();
-                        convertTeacher = list.get(i);
-                        list.set(i,list.get(j));
-                        list.set(j,convertTeacher);
-                    }
-                    if (list.get(i).getDayEat().compareTo(list.get(j).getDayEat()) < 0){ // ngày i muộn hơn ngày j sơm nhất lên đầu
+                if (list.get(i).getNumber() == list.get(j).getNumber()){ // nếu trùng tổng số bánh thì người ăn gần đây nhất lên đầu
+                    if (list.get(i).getDayEat().compareTo(list.get(j).getDayEat()) < 0){ // ngày i trước ngày j sơm nhất lên đầu
                         Teacher convertTeacher = new Teacher();
                         convertTeacher = list.get(j);
                         list.set(j,list.get(i));
@@ -162,7 +160,7 @@ public class TeacherHashMap {
         }
     }
 
-    private static void checkNumber(List<Teacher> list) {
+    private static void checkQuantity(List<Teacher> list) {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i+1; j < list.size(); j++) {
                 if (list.get(i).getNumber() < list.get(j).getNumber()){
@@ -177,13 +175,22 @@ public class TeacherHashMap {
 
     private static void checkDuplicate(List<Teacher> list) {
         for (int i = 0; i < list.size(); i++) {
+            int sum = list.get(i).getNumber();
             for (int j = i+1; j < list.size(); j++) {
                 if (list.get(i).getRollNumber().equals(list.get(j).getRollNumber())){
-                    list.get(j).setRollNumber(list.get(j).getRollNumber());
-                    list.get(j).setName(list.get(j).getName());
-                    list.get(j).setDayEat(list.get(j).getDayEat());
-                    list.get(j).setNumber(list.get(i).getNumber() + list.get(j).getNumber());
-                    list.remove(list.get(i));
+                    if (list.get(i).getDayEat().compareTo(list.get(j).getDayEat()) < 0){ // nếu ngày i trước j
+                        list.get(i).setDayEat(list.get(j).getDayEat()); // ngày j = ngày i
+                    }
+                    sum = sum +  list.get(j).getNumber();
+                }
+            }
+            list.get(i).setNumber(sum);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if (list.get(i).getRollNumber().equalsIgnoreCase(list.get(j).getRollNumber())){
+                    list.remove(list.get(j));
                 }
             }
         }

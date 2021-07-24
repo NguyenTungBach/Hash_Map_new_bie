@@ -3,13 +3,18 @@ Dữ liệu đầu vào
                     GV001      |            Nguyễn Tuân               |         06-05-2019         |                  1         
                     GV002      |           Ðặng Kim Thi               |         06-05-2019         |                  2         
                     GV001      |            Nguyễn Tuân               |         07-05-2019         |                  2         
-                    GV003      |                  AI do               |         08-05-2017         |                  1         
+                    GV003      |              Quang Hoà               |         07-05-2019         |                  2         
                     GV004      |              Văn Thuận               |         07-05-2019         |                  1         
                     GV005      |             Hồng Luyến               |         08-05-2019         |                  5         
-                    GV002      |           Ðặng Kim Thi               |         08-05-2019         |                  3         
+                    GV002      |           Ðặng Kim Thi               |         08-05-2019         |                  1         
+                    GV002      |           Ðặng Kim Thi               |         09-05-2019         |                  1         
+                    GV005      |             Hồng Luyến               |         09-05-2019         |                  5         
+                    GV001      |            Nguyễn Tuân               |         10-05-2019         |                  1         
+                    GV003      |              Quang Hoà               |         10-05-2019         |                  1         
+                    GV004      |              Văn Thuận               |         11-05-2019         |                  1         
 ....................................... 
 Top giảng viên đang có nguy cơ béo 
             Mã giảng viên      |         Tên Giảng viên               |         Số lượng bánh ngọt         
-                    GV005      |             Hồng Luyến               |                  5         
-                    GV002      |           Ðặng Kim Thi               |                  5         
-                    GV001      |            Nguyễn Tuân               |                  3         
+                    GV005      |             Hồng Luyến               |                 10         
+                    GV001      |            Nguyễn Tuân               |                  4         
+                    GV002      |           Ðặng Kim Thi               |                  4         
