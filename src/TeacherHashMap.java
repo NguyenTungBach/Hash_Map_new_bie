@@ -161,6 +161,7 @@ public class TeacherHashMap {
     }
 
     private static void checkQuantity(List<Teacher> list) {
+        // ăn nhiều nhất lên đầu
         for (int i = 0; i < list.size(); i++) {
             for (int j = i+1; j < list.size(); j++) {
                 if (list.get(i).getNumber() < list.get(j).getNumber()){
@@ -174,19 +175,20 @@ public class TeacherHashMap {
     }
 
     private static void checkDuplicate(List<Teacher> list) {
+        // tổng số bánh được tính cho hết lên đầu, ngày ăn gần đây nhất cho lên đầu
         for (int i = 0; i < list.size(); i++) {
             int sum = list.get(i).getNumber();
             for (int j = i+1; j < list.size(); j++) {
                 if (list.get(i).getRollNumber().equals(list.get(j).getRollNumber())){
                     if (list.get(i).getDayEat().compareTo(list.get(j).getDayEat()) < 0){ // nếu ngày i trước j
-                        list.get(i).setDayEat(list.get(j).getDayEat()); // ngày j = ngày i
+                        list.get(i).setDayEat(list.get(j).getDayEat()); // ngày i = ngày j
                     }
                     sum = sum +  list.get(j).getNumber();
                 }
             }
             list.get(i).setNumber(sum);
         }
-
+        // loại bỏ tất cả những mã giáo viên bị trùng ở còn lại, chỉ còn đúng mã giáo duy nhất ở đầu
         for (int i = 0; i < list.size(); i++) {
             for (int j = i+1; j < list.size(); j++) {
                 if (list.get(i).getRollNumber().equalsIgnoreCase(list.get(j).getRollNumber())){
