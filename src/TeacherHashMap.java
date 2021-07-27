@@ -26,6 +26,9 @@ public class TeacherHashMap {
         List<Teacher> listTop = new ArrayList<>();
 
         File f = new File("test.txt");
+        if (f.delete()){
+            System.out.println(f.getName() + " deleted");
+        }
         System.out.println("Dữ liệu đầu vào");
         writeFile("Dữ liệu đầu vào \n",f);
         System.out.printf("%5s%20s%5s | %1s%21s%14s | %8s%10s%8s | %8s%10s%8s \n",
